@@ -29,7 +29,19 @@
   nav a.back{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-soft); text-decoration:none;}
   nav a.back:hover{color:var(--brick);}
 
-  .hero{padding:70px 0 44px; border-bottom:1px solid var(--line);}
+  .hero{position:relative; padding:70px 0 44px; border-bottom:1px solid var(--line); background-size:cover; background-position:center; overflow:hidden;}
+  .hero::before{content:""; position:absolute; inset:0; z-index:0;}
+  .hero.has-img.tone-dark::before{background:linear-gradient(180deg, rgba(20,24,20,.35) 0%, rgba(20,24,20,.86) 100%);}
+  .hero.has-img.tone-light::before{background:linear-gradient(180deg, rgba(244,242,235,.3) 0%, rgba(244,242,235,.84) 100%);}
+  .hero .wrap{position:relative; z-index:1;}
+  .hero.has-img.tone-dark, .hero.has-img.tone-dark h1, .hero.has-img.tone-dark .tagline{color:#F4F2EB;}
+  .hero.has-img.tone-dark .tagline{color:rgba(244,242,235,.82);}
+  .hero.has-img.tone-dark .status{color:#F4F2EB; border-color:#F4F2EB;}
+  .hero.has-img.tone-dark .meta{border-top-color:rgba(244,242,235,.3);}
+  .hero.has-img.tone-dark .meta .k{color:#B6C7A8;}
+  .hero.has-img.tone-dark .meta .v{color:#F4F2EB;}
+  .hero.has-img.tone-light, .hero.has-img.tone-light h1, .hero.has-img.tone-light .tagline{color:var(--ink);}
+  .hero.has-img.tone-light .tagline{color:var(--ink-soft);}
   .hero .status{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.12em; color:var(--brick); border:1px solid var(--brick); padding:4px 10px; border-radius:2px; display:inline-block; margin-bottom:20px;}
   .hero h1{font-size:clamp(34px,5.5vw,52px); line-height:1.05; max-width:16ch; margin-bottom:18px;}
   .hero p.tagline{font-size:18px; color:var(--ink-soft); max-width:52ch;}
@@ -38,6 +50,8 @@
   .hero .meta div .v{font-size:14px;}
   .hero .live{display:inline-flex; align-items:center; gap:9px; margin-top:28px; font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:.06em; background:var(--ink); color:var(--paper); padding:14px 22px; text-decoration:none; border:1px solid var(--ink); transition:.2s;}
   .hero .live:hover{background:transparent; color:var(--ink);}
+  .hero.has-img.tone-dark .live{background:#F4F2EB; color:var(--ink); border-color:#F4F2EB;}
+  .hero.has-img.tone-dark .live:hover{background:transparent; color:#F4F2EB;}
 
   section.blk{padding:56px 0; border-bottom:1px solid var(--line);}
   .blk .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--moss); margin-bottom:16px; display:block;}
@@ -107,8 +121,13 @@ async function load(){
   if (c.tools)    meta.push(`<div><span class="k">Tools</span><span class="v">${c.tools}</span></div>`);
   if (c.platform) meta.push(`<div><span class="k">Platform</span><span class="v">${c.platform}</span></div>`);
 
+  const heroToneClass = (c.heroTone === 'light') ? 'tone-light' : 'tone-dark';
+  const heroHasImg = c.heroImage && c.heroImage.trim();
+  const heroClass = `hero${heroHasImg ? ' has-img ' + heroToneClass : ''}`;
+  const heroStyle = heroHasImg ? `style="background-image:url('${c.heroImage}')"` : '';
+
   let html = `
-    <section class="hero"><div class="wrap">
+    <section class="${heroClass}" ${heroStyle}><div class="wrap">
       ${c.status ? `<span class="status">${c.status}</span>` : ''}
       <h1>${c.title || ''}</h1>
       ${c.tagline ? `<p class="tagline">${c.tagline}</p>` : (c.description ? `<p class="tagline">${c.description}</p>` : '')}
