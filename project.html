@@ -44,17 +44,28 @@
   .blk h2{font-size:26px; margin-bottom:18px;}
   .prose p{font-size:16px; color:var(--ink-soft); max-width:64ch; margin-bottom:14px; white-space:pre-line;}
 
+  .quicklook{padding:34px 0; border-bottom:1px solid var(--line); background:var(--card);}
+  .quicklook .row{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media(max-width:700px){.quicklook .row{grid-template-columns:1fr;}}
+  .quicklook .cell{background:var(--card); padding:20px 22px;}
+  .quicklook .cell .k{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--brick); display:block; margin-bottom:8px;}
+  .quicklook .cell .v{font-size:15px; line-height:1.45;}
+
   .features{list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
   @media(max-width:640px){.features{grid-template-columns:1fr;}}
   .features li{background:var(--paper); padding:18px 20px;}
   .features li .ft{font-family:'Fraunces',serif; font-size:17px; margin-bottom:5px;}
   .features li .fd{font-size:13.5px; color:var(--ink-soft);}
 
-  .shots-web img{width:100%; border:1px solid var(--line); display:block; margin-bottom:16px;}
-  .shots-mobile{display:flex; gap:16px; flex-wrap:wrap;}
-  .shots-mobile img{width:220px; max-width:44%; border:1px solid var(--line); border-radius:14px; display:block;}
+  .shots-web figure{margin-bottom:22px;}
+  .shots-web img{width:100%; border:1px solid var(--line); display:block;}
+  .shots-mobile{display:flex; gap:16px; flex-wrap:wrap; align-items:flex-start;}
+  .shots-mobile figure{width:220px; max-width:44%;}
+  .shots-mobile img{width:100%; border:1px solid var(--line); border-radius:14px; display:block;}
+  figcaption{font-size:12px; color:var(--ink-soft); margin-top:8px; font-family:'IBM Plex Mono',monospace;}
 
-  .gallery img{width:100%; border:1px solid var(--line); display:block; margin-bottom:16px;}
+  .outcome-blk{background:var(--card);}
+  .outcome-blk .stat{font-family:'Fraunces',serif; font-size:20px; margin-bottom:6px;}
 
   footer{padding:40px 0; text-align:center;}
   footer a{font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:.08em; text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:3px;}
@@ -105,6 +116,17 @@ async function load(){
       ${c.link ? `<a class="live" href="${c.link}" target="_blank" rel="noopener">Open live prototype →</a>` : ''}
     </div></section>`;
 
+  // Quick-look: problem / process / outcome at a glance
+  if (c.problem || c.process || c.outcome){
+    html += `<section class="quicklook"><div class="wrap">
+      <div class="row">
+        <div class="cell"><span class="k">Problem</span><span class="v">${c.problem||'—'}</span></div>
+        <div class="cell"><span class="k">Process</span><span class="v">${c.process||'—'}</span></div>
+        <div class="cell"><span class="k">Outcome</span><span class="v">${c.outcome||'—'}</span></div>
+      </div>
+    </div></section>`;
+  }
+
   // Concept / idea
   if (c.concept){
     html += `<section class="blk"><div class="wrap">
@@ -129,15 +151,23 @@ async function load(){
   if (c.webShots && c.webShots.length){
     html += `<section class="blk"><div class="wrap">
       <span class="eyebrow">Responsive website</span><h2>On the web</h2>
-      <div class="shots-web">${c.webShots.map(s => `<img src="${s.image}" alt="${s.caption||''}">`).join('')}</div>
+      <div class="shots-web">${c.webShots.map(s =>
+        `<figure><img src="${s.image}" alt="${s.caption||''}">${s.caption ? `<figcaption>${s.caption}</figcaption>` : ''}</figure>`).join('')}</div>
     </div></section>`;
   }
   // Mobile screenshots
   if (c.mobileShots && c.mobileShots.length){
     html += `<section class="blk"><div class="wrap">
       <span class="eyebrow">Mobile app</span><h2>On the phone</h2>
-      <div class="shots-mobile">${c.mobileShots.map(s => `<img src="${s.image}" alt="${s.caption||''}">`).join('')}</div>
+      <div class="shots-mobile">${c.mobileShots.map(s =>
+        `<figure><img src="${s.image}" alt="${s.caption||''}">${s.caption ? `<figcaption>${s.caption}</figcaption>` : ''}</figure>`).join('')}</div>
     </div></section>`;
+  }
+  // Outcome & reflection
+  if (c.reflection){
+    html += `<section class="blk outcome-blk"><div class="wrap">
+      <span class="eyebrow">Looking back</span><h2>Outcome &amp; reflection</h2>
+      <div class="prose"><p>${c.reflection}</p></div></div></section>`;
   }
 
   html += `<footer><div class="wrap">

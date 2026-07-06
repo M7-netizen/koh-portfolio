@@ -79,16 +79,14 @@
   .case-card .base.on-light{color:var(--ink);}
   .case-card .status{font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.1em; display:inline-block; padding:3px 8px; border-radius:2px; border:1px solid currentColor; margin-bottom:10px; background:rgba(0,0,0,.14); backdrop-filter:blur(2px);}
   .case-card h3{font-size:20px; line-height:1.08; margin:0; font-family:'Fraunces',serif; font-weight:500;}
-  /* hover overlay with PPO */
-  .case-card .more{position:absolute; inset:0; z-index:2; padding:20px; display:flex; flex-direction:column; justify-content:flex-end; gap:12px; opacity:0; transform:translateY(12px); transition:opacity .3s ease, transform .35s cubic-bezier(.2,.8,.3,1); background:linear-gradient(180deg, rgba(23,26,22,.2) 0%, rgba(23,26,22,.88) 78%); color:#F4F2EB;}
+  /* hover overlay with description only (PPO now lives on the detail page) */
+  .case-card .more{position:absolute; inset:0; z-index:2; padding:22px; display:flex; flex-direction:column; justify-content:flex-end; gap:10px; opacity:0; transform:translateY(12px); transition:opacity .3s ease, transform .35s cubic-bezier(.2,.8,.3,1); background:linear-gradient(180deg, rgba(23,26,22,.15) 0%, rgba(23,26,22,.86) 70%); color:#F4F2EB;}
   .case-card:hover .more{opacity:1; transform:translateY(0);}
   .case-card:hover .base{opacity:0;}
-  .case-card .more h3{margin-bottom:2px;}
-  .case-card .more .ppo{display:flex; flex-direction:column; gap:8px;}
-  .case-card .more .ppo div{font-size:12px; line-height:1.4; color:rgba(244,242,235,.85);}
-  .case-card .more .ppo .k{font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.08em; color:#B6C7A8; display:block; margin-bottom:2px;}
-  .case-card .more .go{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.05em; border-bottom:1px solid currentColor; align-self:flex-start; padding-bottom:2px;}
-  @media (hover:none){ .case-card .more{opacity:1; transform:none; position:static; background:var(--card); color:var(--ink); padding-top:12px;} .case-card{aspect-ratio:auto;} .case-card .cover{position:relative; aspect-ratio:16/10; display:block;} .case-card .base{display:none;} .case-card .more .ppo div{color:var(--ink-soft);} .case-card .more h3{color:var(--ink);} }
+  .case-card .more h3{margin-bottom:6px;}
+  .case-card .more .brief{font-size:13.5px; line-height:1.5; color:rgba(244,242,235,.88); display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;}
+  .case-card .more .go{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.05em; border-bottom:1px solid currentColor; align-self:flex-start; padding-bottom:2px; margin-top:2px;}
+  @media (hover:none){ .case-card .more{opacity:1; transform:none; position:static; background:var(--card); color:var(--ink); padding-top:12px;} .case-card{aspect-ratio:auto;} .case-card .cover{position:relative; aspect-ratio:16/10; display:block;} .case-card .base{display:none;} .case-card .more .brief{color:var(--ink-soft); -webkit-line-clamp:initial;} .case-card .more h3{color:var(--ink);} }
   .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
   .skill-cell{background:var(--paper); padding:22px 20px;}
   .skill-cell .k{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--brick); display:block; margin-bottom:10px;}
@@ -234,11 +232,7 @@ async function loadContent(){
         </div>
         <div class="more">
           <h3>${c.title||''}</h3>
-          <div class="ppo">
-            <div><span class="k">Problem</span>${c.problem||'—'}</div>
-            <div><span class="k">Process</span>${c.process||'—'}</div>
-            <div><span class="k">Outcome</span>${c.outcome||'—'}</div>
-          </div>
+          <div class="brief">${c.description||''}</div>
           <span class="go">View project →</span>
         </div>
       </a>`;
