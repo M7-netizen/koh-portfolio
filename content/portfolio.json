@@ -116,7 +116,7 @@
       "problem": "Plant owners can tell something's wrong but rarely know what — or how to fix it before it's too late."
     },
     {
-      "heroImage": "/uploads/截图4.jpg",
+      "heroImage": "/uploads/活着要多少钱_截图5.jpg",
       "webShots": [
         {
           "image": "/uploads/活着要多少钱_截图4.png"
@@ -134,9 +134,9 @@
           "image": "/uploads/活着要多少钱_截图2.png"
         }
       ],
-      "cover": "/uploads/截图3.jpg",
+      "cover": "/uploads/活着要多少钱_截图3.jpg",
       "title": "Project 02 — How Much To Live",
-      "link": "",
+      "link": "https://m7-netizen.github.io/How-Much-to-Live---Demo/",
       "description": "A personal finance tracker inspired by my black cat, exploring the question: \"How much does it actually cost to live?\"",
       "features": [
         {
