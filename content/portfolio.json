@@ -61,7 +61,7 @@
   "caseStudies": [
     {
       "status": "In progress",
-      "title": "Case study 01 — title pending",
+      "title": "Project 01 — Flora",
       "description": "First case study, currently in the research/wireframe stage as part of the Google UX Design Certificate coursework.",
       "problem": "—",
       "process": "—",
@@ -70,7 +70,7 @@
     },
     {
       "status": "Planned",
-      "title": "Case study 02 — title pending",
+      "title": "Project 02 — title pending",
       "description": "Reserved slot for a second project. A redesign case study is a strong choice here — it doesn't require original research to start.",
       "problem": "—",
       "process": "—",
