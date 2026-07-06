@@ -79,7 +79,7 @@
           "image": "/uploads/截图.png"
         }
       ],
-      "cover": "/uploads/截图4.png",
+      "cover": "/uploads/截图.png",
       "title": "Project 01 — Flora — a plant companion",
       "link": "https://m7-netizen.github.io/Flora/",
       "description": "A conversational app and responsive website that helps people diagnose issues with their houseplants. Scan a plant, get a living diagnosis with care advice, and fast-forward its growth in an AR-style timeline. Built as a fully interactive hi-fi prototype.",
@@ -116,14 +116,15 @@
       "problem": "Plant owners can tell something's wrong but rarely know what — or how to fix it before it's too late."
     },
     {
-      "status": "Planned",
-      "title": "Project 02 — title pending",
-      "description": "Reserved slot for a second project. A redesign case study is a strong choice here — it doesn't require original research to start.",
-      "problem": "—",
+      "heroImage": "/uploads/截图1.png",
+      "coverTone": "dark",
       "process": "—",
       "outcome": "—",
+      "status": "In progress",
+      "title": "Project 02 — How Much To Live",
       "link": "",
-      "coverTone": "light"
+      "description": "Reserved slot for a second project. A redesign case study is a strong choice here — it doesn't require original research to start.",
+      "problem": "—"
     }
   ],
   "heroHeadlinePlain": "Designing systems people can actually ",
