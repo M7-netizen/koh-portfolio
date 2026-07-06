@@ -119,14 +119,14 @@
       "heroImage": "/uploads/截图4.jpg",
       "coverTone": "dark",
       "heroTone": "dark",
-      "process": "—",
-      "outcome": "—",
+      "process": "Mapping personal finance behaviors → designing flexible categories, cash flow tracking, shared expenses, and multi-currency support.",
+      "outcome": "A customisable finance tracker that transforms complex spending data into clear, actionable insights.",
       "status": "In progress",
       "cover": "/uploads/截图3.jpg",
       "title": "Project 02 — How Much To Live",
       "link": "",
-      "description": "Reserved slot for a second project. A redesign case study is a strong choice here — it doesn't require original research to start.",
-      "problem": "—"
+      "description": "A personal finance tracker inspired by my black cat, exploring the question: \"How much does it actually cost to live?\"",
+      "problem": "Existing budgeting apps are often too rigid for real-life financial habits."
     }
   ],
   "heroHeadlinePlain": "Designing systems people can actually ",
