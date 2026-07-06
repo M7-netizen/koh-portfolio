@@ -73,9 +73,10 @@
 
   .shots-web figure{margin-bottom:22px;}
   .shots-web img{width:100%; border:1px solid var(--line); display:block;}
-  .shots-mobile{display:flex; gap:16px; flex-wrap:wrap; align-items:flex-start;}
-  .shots-mobile figure{width:220px; max-width:44%;}
-  .shots-mobile img{width:100%; border:1px solid var(--line); border-radius:14px; display:block;}
+  .shots-mobile{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  @media(max-width:700px){.shots-mobile{grid-template-columns:repeat(2,1fr);}}
+  .shots-mobile figure{width:100%;}
+  .shots-mobile img{width:100%; aspect-ratio:9/19.5; object-fit:cover; border:1px solid var(--line); border-radius:14px; display:block;}
   figcaption{font-size:12px; color:var(--ink-soft); margin-top:8px; font-family:'IBM Plex Mono',monospace;}
 
   .outcome-blk{background:var(--card);}
