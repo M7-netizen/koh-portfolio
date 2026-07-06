@@ -142,6 +142,26 @@
         {
           "title": "Flexible Category System",
           "detail": "Create personalised categories and subcategories that adapt to individual spending habits."
+        },
+        {
+          "title": "Monthly Cash Flow Tracking",
+          "detail": "Track actual monthly cash flow by combining income, credit card payments, and daily expenses."
+        },
+        {
+          "title": "Shared Expense Management",
+          "detail": "Record and organise shared spending with partners while maintaining individual financial visibility."
+        },
+        {
+          "title": "Multi-Currency Support",
+          "detail": "Log expenses in different currencies and view them within a unified financial overview."
+        },
+        {
+          "title": "Payment Method Tracking",
+          "detail": "Analyse spending patterns across cash, cards, bank transfers, and digital payments."
+        },
+        {
+          "title": "Automatic Spending Insights",
+          "detail": "Automatically rank spending categories to reveal where money goes each month."
         }
       ],
       "problem": "Existing budgeting apps are often too rigid for real-life financial habits."
