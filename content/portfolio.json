@@ -60,13 +60,13 @@
   "location": "Singapore",
   "caseStudies": [
     {
-      "status": "In progress",
-      "title": "Project 01 — Flora",
-      "description": "First case study, currently in the research/wireframe stage as part of the Google UX Design Certificate coursework.",
-      "problem": "—",
-      "process": "—",
-      "outcome": "—",
-      "link": ""
+      "status": "Live prototype",
+      "title": "Project 01 — Flora — a plant companion",
+      "description": "A conversational app and responsive website that helps people diagnose issues with their houseplants. Scan a plant, get a living diagnosis with care advice, and fast-forward its growth in an AR-style timeline. Built as a fully interactive hi-fi prototype.",
+      "problem": "Plant owners can tell something's wrong but rarely know what — or how to fix it before it's too late.",
+      "process": "Conversational onboarding → camera scan → part-by-part analysis → care plan → growth preview.",
+      "outcome": "A high-fidelity, clickable prototype spanning mobile app and responsive web.",
+      "link": "https://m7-netizen.github.io/Flora/"
     },
     {
       "status": "Planned",
