@@ -64,15 +64,29 @@
   .transfer-list li:last-child{border-bottom:1px solid var(--line);}
   .transfer-list .from{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em;}
   .transfer-list .to{font-size:14.5px;}
-  .case-grid{display:flex; flex-direction:column; gap:22px;}
-  .case-card{position:relative; background:var(--card); border:1px solid var(--line); padding:32px; transition:border-color .25s, transform .25s;}
-  .case-card:hover{border-color:var(--ink); transform:translateY(-2px);}
-  .case-card .status{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--brick); border:1px solid var(--brick); display:inline-block; padding:3px 8px; margin-bottom:16px; border-radius:2px;}
-  .case-card h3{font-size:22px; margin-bottom:10px;}
-  .case-card .desc{color:var(--ink-soft); font-size:14.5px; max-width:60ch; margin-bottom:18px;}
-  .case-card .caselink{font-family:'IBM Plex Mono',monospace; font-size:12px; text-decoration:none; border-bottom:1px solid var(--line); display:inline-block; margin-bottom:18px;}
+  .case-grid{display:flex; flex-direction:column; gap:26px;}
+  .case-card{position:relative; background:var(--card); border:1px solid var(--line); overflow:hidden; transition:transform .3s cubic-bezier(.2,.8,.3,1), box-shadow .3s ease, border-color .25s; display:block; text-decoration:none; color:inherit;}
+  .case-card:hover{transform:translateY(-8px); box-shadow:0 22px 40px -22px rgba(32,36,31,.55); border-color:var(--ink);}
+  /* cover */
+  .case-card .cover{position:relative; aspect-ratio:16/9; background:var(--paper-2); background-size:cover; background-position:top center; display:flex; flex-direction:column; justify-content:space-between; padding:20px 22px;}
+  .case-card .cover::after{content:""; position:absolute; inset:0; pointer-events:none; transition:opacity .3s;}
+  /* tone: dark cover -> white text + dark scrim; light cover -> ink text + light scrim */
+  .case-card .cover.tone-dark{color:#F4F2EB;}
+  .case-card .cover.tone-dark::after{background:linear-gradient(180deg, rgba(20,24,20,.15) 0%, rgba(20,24,20,.72) 100%);}
+  .case-card .cover.tone-light{color:var(--ink);}
+  .case-card .cover.tone-light::after{background:linear-gradient(180deg, rgba(244,242,235,.05) 0%, rgba(244,242,235,.68) 100%);}
+  .case-card .cover.noimg{background:linear-gradient(135deg, var(--moss), var(--pine-deep, #2f3d2f));}
+  .case-card .cover > *{position:relative; z-index:1;}
+  .case-card .status{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; display:inline-block; padding:4px 9px; border-radius:2px; align-self:flex-start; border:1px solid currentColor; background:rgba(0,0,0,.12); backdrop-filter:blur(2px);}
+  .case-card .cover-foot{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .case-card h3{font-size:24px; line-height:1.05; margin:0; font-family:'Fraunces', serif; font-weight:500;}
+  .case-card .open{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.05em; white-space:nowrap; opacity:.9; border-bottom:1px solid currentColor; padding-bottom:2px;}
+  .case-card:hover .open{opacity:1;}
+  /* body below cover */
+  .case-card .card-body{padding:22px; background:var(--card);}
+  .case-card .desc{color:var(--ink-soft); font-size:14.5px; max-width:64ch; margin:0 0 16px;}
   .case-steps{display:flex; gap:24px; flex-wrap:wrap;}
-  .case-steps div{font-size:12.5px; color:var(--ink-soft);}
+  .case-steps div{font-size:12.5px; color:var(--ink-soft); max-width:26ch;}
   .case-steps .k{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--moss); display:block; margin-bottom:3px;}
   .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
   .skill-cell{background:var(--paper); padding:22px 20px;}
@@ -195,19 +209,31 @@ async function loadContent(){
     (d.transferList||[]).map(t => `<li><span class="from">${t.from}</span><span class="to">${t.to}</span></li>`).join('');
 
   document.getElementById('caseGrid').innerHTML =
-    (d.caseStudies||[]).map(c => `
-      <div class="case-card reveal">
-        <span class="status">${c.status||''}</span>
-        <h3>${c.title||''}</h3>
-        <p class="desc">${c.description||''}</p>
-        ${c.link ? `<a class="caselink" href="${c.link}" target="_blank">Open live prototype →</a>` : ''}
-        <div class="case-steps">
-          <div><span class="k">Problem</span>${c.problem||'—'}</div>
-          <div><span class="k">Process</span>${c.process||'—'}</div>
-          <div><span class="k">Outcome</span>${c.outcome||'—'}</div>
+    (d.caseStudies||[]).map(c => {
+      const hasImg = c.cover && c.cover.trim();
+      const tone = (c.coverTone === 'light') ? 'tone-light' : 'tone-dark';
+      const coverStyle = hasImg ? `style="background-image:url('${c.cover}')"` : '';
+      const coverClass = hasImg ? tone : `${tone} noimg`;
+      const inner = `
+        <div class="cover ${coverClass}" ${coverStyle}>
+          <span class="status">${c.status||''}</span>
+          <div class="cover-foot">
+            <h3>${c.title||''}</h3>
+            ${c.link ? `<span class="open">Open live prototype →</span>` : ''}
+          </div>
         </div>
-      </div>
-    `).join('');
+        <div class="card-body">
+          <p class="desc">${c.description||''}</p>
+          <div class="case-steps">
+            <div><span class="k">Problem</span>${c.problem||'—'}</div>
+            <div><span class="k">Process</span>${c.process||'—'}</div>
+            <div><span class="k">Outcome</span>${c.outcome||'—'}</div>
+          </div>
+        </div>`;
+      return c.link
+        ? `<a class="case-card reveal" href="${c.link}" target="_blank" rel="noopener">${inner}</a>`
+        : `<div class="case-card reveal">${inner}</div>`;
+    }).join('');
 
   document.getElementById('skillsGrid').innerHTML =
     (d.skills||[]).map(s => `<div class="skill-cell"><span class="k">${s.category}</span><p>${s.description}</p></div>`).join('');
