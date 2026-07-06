@@ -23,6 +23,15 @@ collections:
           - { label: "Discipline", name: "discipline", widget: "string" }
           - { label: "Location", name: "location", widget: "string" }
           - { label: "Status", name: "status", widget: "string" }
+          - label: "Section headings (leave blank to use defaults)"
+            name: "sectionTitles"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "About heading", name: "about", widget: "string", required: false }
+              - { label: "Projects heading", name: "projects", widget: "string", required: false }
+              - { label: "Skills heading", name: "skills", widget: "string", required: false }
+              - { label: "Contact heading", name: "contact", widget: "string", required: false }
           - label: "About — paragraphs"
             name: "aboutParagraphs"
             widget: "list"
@@ -36,16 +45,45 @@ collections:
           - label: "Projects"
             name: "caseStudies"
             widget: "list"
+            summary: "{{fields.title}}"
             fields:
               - { label: "Status", name: "status", widget: "select", options: ["Live prototype", "In progress", "Planned", "Complete"] }
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Cover image", name: "cover", widget: "image", required: false, hint: "Screenshot of the project. Leave empty for a plain gradient cover." }
-              - { label: "Cover is dark or light?", name: "coverTone", widget: "select", options: ["dark", "light"], default: "dark", hint: "Dark cover → white text. Light cover → black text." }
-              - { label: "Description", name: "description", widget: "text" }
-              - { label: "Problem", name: "problem", widget: "string", required: false }
-              - { label: "Process", name: "process", widget: "string", required: false }
-              - { label: "Outcome", name: "outcome", widget: "string", required: false }
-              - { label: "Link to live prototype / project (optional)", name: "link", widget: "string", required: false }
+              - { label: "Cover image (card)", name: "cover", widget: "image", required: false, hint: "Screenshot for the homepage card. Leave empty for a gradient cover." }
+              - { label: "Cover is dark or light?", name: "coverTone", widget: "select", options: ["dark", "light"], default: "dark", hint: "Dark cover shows white text, light cover shows black text." }
+              - { label: "Short description (card + hero fallback)", name: "description", widget: "text" }
+              - { label: "Problem (card hover)", name: "problem", widget: "string", required: false }
+              - { label: "Process (card hover)", name: "process", widget: "string", required: false }
+              - { label: "Outcome (card hover)", name: "outcome", widget: "string", required: false }
+              - { label: "Link to live prototype / site", name: "link", widget: "string", required: false }
+              - { label: "Tagline (big line on detail page)", name: "tagline", widget: "text", required: false }
+              - { label: "Role", name: "role", widget: "string", required: false }
+              - { label: "Timeline", name: "timeline", widget: "string", required: false }
+              - { label: "Tools", name: "tools", widget: "string", required: false }
+              - { label: "Platform", name: "platform", widget: "string", required: false, hint: "e.g. Mobile app + responsive web" }
+              - { label: "Concept / the idea", name: "concept", widget: "text", required: false }
+              - { label: "Design approach", name: "approach", widget: "text", required: false }
+              - label: "Key features"
+                name: "features"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Feature title", name: "title", widget: "string" }
+                  - { label: "Feature detail", name: "detail", widget: "string", required: false }
+              - label: "Website screenshots (wide)"
+                name: "webShots"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Caption", name: "caption", widget: "string", required: false }
+              - label: "Mobile screenshots (tall)"
+                name: "mobileShots"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Image", name: "image", widget: "image" }
+                  - { label: "Caption", name: "caption", widget: "string", required: false }
           - label: "Skills grid"
             name: "skills"
             widget: "list"
