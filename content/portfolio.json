@@ -60,7 +60,9 @@
   "location": "Singapore",
   "caseStudies": [
     {
+      "heroImage": "/uploads/截图4.png",
       "coverTone": "dark",
+      "heroTone": "dark",
       "process": "Conversational onboarding → camera scan → part-by-part analysis → care plan → growth preview.",
       "outcome": "A high-fidelity, clickable prototype spanning mobile app and responsive web.",
       "status": "Live prototype",
@@ -82,7 +84,8 @@
       "problem": "—",
       "process": "—",
       "outcome": "—",
-      "link": ""
+      "link": "",
+      "coverTone": "light"
     }
   ],
   "heroHeadlinePlain": "Designing systems people can actually ",
