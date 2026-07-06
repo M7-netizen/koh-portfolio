@@ -64,30 +64,31 @@
   .transfer-list li:last-child{border-bottom:1px solid var(--line);}
   .transfer-list .from{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em;}
   .transfer-list .to{font-size:14.5px;}
-  .case-grid{display:flex; flex-direction:column; gap:26px;}
-  .case-card{position:relative; background:var(--card); border:1px solid var(--line); overflow:hidden; transition:transform .3s cubic-bezier(.2,.8,.3,1), box-shadow .3s ease, border-color .25s; display:block; text-decoration:none; color:inherit;}
-  .case-card:hover{transform:translateY(-8px); box-shadow:0 22px 40px -22px rgba(32,36,31,.55); border-color:var(--ink);}
-  /* cover */
-  .case-card .cover{position:relative; aspect-ratio:16/9; background:var(--paper-2); background-size:cover; background-position:top center; display:flex; flex-direction:column; justify-content:space-between; padding:20px 22px;}
-  .case-card .cover::after{content:""; position:absolute; inset:0; pointer-events:none; transition:opacity .3s;}
-  /* tone: dark cover -> white text + dark scrim; light cover -> ink text + light scrim */
-  .case-card .cover.tone-dark{color:#F4F2EB;}
-  .case-card .cover.tone-dark::after{background:linear-gradient(180deg, rgba(20,24,20,.15) 0%, rgba(20,24,20,.72) 100%);}
-  .case-card .cover.tone-light{color:var(--ink);}
-  .case-card .cover.tone-light::after{background:linear-gradient(180deg, rgba(244,242,235,.05) 0%, rgba(244,242,235,.68) 100%);}
-  .case-card .cover.noimg{background:linear-gradient(135deg, var(--moss), var(--pine-deep, #2f3d2f));}
-  .case-card .cover > *{position:relative; z-index:1;}
-  .case-card .status{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; display:inline-block; padding:4px 9px; border-radius:2px; align-self:flex-start; border:1px solid currentColor; background:rgba(0,0,0,.12); backdrop-filter:blur(2px);}
-  .case-card .cover-foot{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;}
-  .case-card h3{font-size:24px; line-height:1.05; margin:0; font-family:'Fraunces', serif; font-weight:500;}
-  .case-card .open{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.05em; white-space:nowrap; opacity:.9; border-bottom:1px solid currentColor; padding-bottom:2px;}
-  .case-card:hover .open{opacity:1;}
-  /* body below cover */
-  .case-card .card-body{padding:22px; background:var(--card);}
-  .case-card .desc{color:var(--ink-soft); font-size:14.5px; max-width:64ch; margin:0 0 16px;}
-  .case-steps{display:flex; gap:24px; flex-wrap:wrap;}
-  .case-steps div{font-size:12.5px; color:var(--ink-soft); max-width:26ch;}
-  .case-steps .k{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--moss); display:block; margin-bottom:3px;}
+  .case-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media(max-width:900px){.case-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.case-grid{grid-template-columns:1fr;}}
+  .case-card{position:relative; display:block; text-decoration:none; color:inherit; border:1px solid var(--line); background:var(--card); overflow:hidden; aspect-ratio:4/5; transition:transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s ease, border-color .25s; z-index:1;}
+  .case-card:hover{transform:translateY(-10px) scale(1.03); box-shadow:0 26px 46px -22px rgba(32,36,31,.6); border-color:var(--ink); z-index:2;}
+  .case-card .cover{position:absolute; inset:0; background-size:cover; background-position:top center;}
+  .case-card .cover.noimg{background:linear-gradient(140deg, var(--moss) 0%, #23331f 100%);}
+  .case-card .cover::after{content:""; position:absolute; inset:0; transition:opacity .3s;}
+  .case-card .tone-dark::after{background:linear-gradient(180deg, rgba(20,24,20,.05) 30%, rgba(20,24,20,.66) 100%);}
+  .case-card .tone-light::after{background:linear-gradient(180deg, rgba(244,242,235,.02) 30%, rgba(244,242,235,.6) 100%);}
+  .case-card .base{position:absolute; left:0; right:0; bottom:0; padding:18px; z-index:1; transition:opacity .25s;}
+  .case-card .tone-dark ~ .base, .case-card .base.on-dark{color:#F4F2EB;}
+  .case-card .base.on-light{color:var(--ink);}
+  .case-card .status{font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.1em; display:inline-block; padding:3px 8px; border-radius:2px; border:1px solid currentColor; margin-bottom:10px; background:rgba(0,0,0,.14); backdrop-filter:blur(2px);}
+  .case-card h3{font-size:20px; line-height:1.08; margin:0; font-family:'Fraunces',serif; font-weight:500;}
+  /* hover overlay with PPO */
+  .case-card .more{position:absolute; inset:0; z-index:2; padding:20px; display:flex; flex-direction:column; justify-content:flex-end; gap:12px; opacity:0; transform:translateY(12px); transition:opacity .3s ease, transform .35s cubic-bezier(.2,.8,.3,1); background:linear-gradient(180deg, rgba(23,26,22,.2) 0%, rgba(23,26,22,.88) 78%); color:#F4F2EB;}
+  .case-card:hover .more{opacity:1; transform:translateY(0);}
+  .case-card:hover .base{opacity:0;}
+  .case-card .more h3{margin-bottom:2px;}
+  .case-card .more .ppo{display:flex; flex-direction:column; gap:8px;}
+  .case-card .more .ppo div{font-size:12px; line-height:1.4; color:rgba(244,242,235,.85);}
+  .case-card .more .ppo .k{font-family:'IBM Plex Mono',monospace; font-size:9.5px; text-transform:uppercase; letter-spacing:.08em; color:#B6C7A8; display:block; margin-bottom:2px;}
+  .case-card .more .go{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.05em; border-bottom:1px solid currentColor; align-self:flex-start; padding-bottom:2px;}
+  @media (hover:none){ .case-card .more{opacity:1; transform:none; position:static; background:var(--card); color:var(--ink); padding-top:12px;} .case-card{aspect-ratio:auto;} .case-card .cover{position:relative; aspect-ratio:16/10; display:block;} .case-card .base{display:none;} .case-card .more .ppo div{color:var(--ink-soft);} .case-card .more h3{color:var(--ink);} }
   .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
   .skill-cell{background:var(--paper); padding:22px 20px;}
   .skill-cell .k{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--brick); display:block; margin-bottom:10px;}
@@ -149,7 +150,7 @@
 <section id="about">
   <div class="reg tl"><span class="reg-circle"></span></div>
   <div class="reg br"><span class="reg-circle"></span></div>
-  <div class="sec-head"><span class="idx">§01</span><h2>About</h2></div>
+  <div class="sec-head"><span class="idx">§01</span><h2 id="secAbout">About</h2></div>
   <div class="about-grid">
     <div class="reveal" id="aboutParagraphs"></div>
     <ul class="transfer-list" id="transferList"></ul>
@@ -159,14 +160,14 @@
 <section id="work">
   <div class="reg tl"><span class="reg-circle"></span></div>
   <div class="reg br"><span class="reg-circle"></span></div>
-  <div class="sec-head"><span class="idx">§02</span><h2>Projects</h2></div>
+  <div class="sec-head"><span class="idx">§02</span><h2 id="secProjects">Projects</h2></div>
   <div class="case-grid" id="caseGrid"></div>
 </section>
 
 <section id="skills">
   <div class="reg tl"><span class="reg-circle"></span></div>
   <div class="reg br"><span class="reg-circle"></span></div>
-  <div class="sec-head"><span class="idx">§03</span><h2>Tools &amp; methods</h2></div>
+  <div class="sec-head"><span class="idx">§03</span><h2 id="secSkills">Tools &amp; methods</h2></div>
   <div class="skills-grid" id="skillsGrid"></div>
 </section>
 
@@ -175,7 +176,7 @@
   <div class="reg br"><span class="reg-circle"></span></div>
   <div class="contact">
     <div>
-      <h2>Let's talk.</h2>
+      <h2 id="secContact">Let's talk.</h2>
       <p>Open to junior UX/UI roles and opportunities to learn on the job. Resume available on request.</p>
       <a class="btn" id="emailBtn" href="#">Email me →</a>
     </div>
@@ -202,6 +203,15 @@ async function loadContent(){
   document.getElementById('tbLocation').textContent = d.location || '';
   document.getElementById('tbStatus').textContent = d.status || '';
 
+  // editable section titles (fallback to defaults)
+  if (d.sectionTitles) {
+    const st = d.sectionTitles;
+    if (st.about) document.getElementById('secAbout').textContent = st.about;
+    if (st.projects) document.getElementById('secProjects').textContent = st.projects;
+    if (st.skills) document.getElementById('secSkills').textContent = st.skills;
+    if (st.contact) document.getElementById('secContact').textContent = st.contact;
+  }
+
   document.getElementById('aboutParagraphs').innerHTML =
     (d.aboutParagraphs||[]).map(p => `<p>${p}</p>`).join('');
 
@@ -209,30 +219,29 @@ async function loadContent(){
     (d.transferList||[]).map(t => `<li><span class="from">${t.from}</span><span class="to">${t.to}</span></li>`).join('');
 
   document.getElementById('caseGrid').innerHTML =
-    (d.caseStudies||[]).map(c => {
+    (d.caseStudies||[]).map((c, i) => {
       const hasImg = c.cover && c.cover.trim();
       const tone = (c.coverTone === 'light') ? 'tone-light' : 'tone-dark';
+      const baseTone = (c.coverTone === 'light') ? 'on-light' : 'on-dark';
       const coverStyle = hasImg ? `style="background-image:url('${c.cover}')"` : '';
       const coverClass = hasImg ? tone : `${tone} noimg`;
-      const inner = `
-        <div class="cover ${coverClass}" ${coverStyle}>
+      return `
+      <a class="case-card reveal" href="project.html?p=${i}">
+        <div class="cover ${coverClass}" ${coverStyle}></div>
+        <div class="base ${baseTone}">
           <span class="status">${c.status||''}</span>
-          <div class="cover-foot">
-            <h3>${c.title||''}</h3>
-            ${c.link ? `<span class="open">Open live prototype →</span>` : ''}
-          </div>
+          <h3>${c.title||''}</h3>
         </div>
-        <div class="card-body">
-          <p class="desc">${c.description||''}</p>
-          <div class="case-steps">
+        <div class="more">
+          <h3>${c.title||''}</h3>
+          <div class="ppo">
             <div><span class="k">Problem</span>${c.problem||'—'}</div>
             <div><span class="k">Process</span>${c.process||'—'}</div>
             <div><span class="k">Outcome</span>${c.outcome||'—'}</div>
           </div>
-        </div>`;
-      return c.link
-        ? `<a class="case-card reveal" href="${c.link}" target="_blank" rel="noopener">${inner}</a>`
-        : `<div class="case-card reveal">${inner}</div>`;
+          <span class="go">View project →</span>
+        </div>
+      </a>`;
     }).join('');
 
   document.getElementById('skillsGrid').innerHTML =

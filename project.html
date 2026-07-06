@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project — Koh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEAE3; --paper-2:#E2DDD0; --ink:#20241F; --ink-soft:#565A50;
+    --line:#B7AF9E; --moss:#4C6B52; --brick:#9C4A32; --card:#F4F2EB; --maxw:920px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans',sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased;
+    background-image:linear-gradient(var(--line) .5px, transparent .5px), linear-gradient(90deg, var(--line) .5px, transparent .5px);
+    background-size:38px 38px; background-attachment:fixed;}
+  body::before{content:""; position:fixed; inset:0; background:var(--paper); opacity:.86; z-index:-1;}
+  .mono{font-family:'IBM Plex Mono',monospace; letter-spacing:.03em;}
+  h1,h2,h3{font-family:'Fraunces',serif; font-weight:500; letter-spacing:-.01em;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+
+  nav{position:sticky; top:0; z-index:20; background:rgba(237,234,227,.9); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; height:56px;}
+  nav .name{font-family:'Fraunces',serif; font-weight:500; font-size:16px;}
+  nav a.back{font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-soft); text-decoration:none;}
+  nav a.back:hover{color:var(--brick);}
+
+  .hero{padding:70px 0 44px; border-bottom:1px solid var(--line);}
+  .hero .status{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.12em; color:var(--brick); border:1px solid var(--brick); padding:4px 10px; border-radius:2px; display:inline-block; margin-bottom:20px;}
+  .hero h1{font-size:clamp(34px,5.5vw,52px); line-height:1.05; max-width:16ch; margin-bottom:18px;}
+  .hero p.tagline{font-size:18px; color:var(--ink-soft); max-width:52ch;}
+  .hero .meta{display:flex; gap:28px; flex-wrap:wrap; margin-top:30px; border-top:1px solid var(--line); padding-top:22px;}
+  .hero .meta div .k{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--moss); display:block; margin-bottom:4px;}
+  .hero .meta div .v{font-size:14px;}
+  .hero .live{display:inline-flex; align-items:center; gap:9px; margin-top:28px; font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:.06em; background:var(--ink); color:var(--paper); padding:14px 22px; text-decoration:none; border:1px solid var(--ink); transition:.2s;}
+  .hero .live:hover{background:transparent; color:var(--ink);}
+
+  section.blk{padding:56px 0; border-bottom:1px solid var(--line);}
+  .blk .eyebrow{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--moss); margin-bottom:16px; display:block;}
+  .blk h2{font-size:26px; margin-bottom:18px;}
+  .prose p{font-size:16px; color:var(--ink-soft); max-width:64ch; margin-bottom:14px; white-space:pre-line;}
+
+  .features{list-style:none; display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+  @media(max-width:640px){.features{grid-template-columns:1fr;}}
+  .features li{background:var(--paper); padding:18px 20px;}
+  .features li .ft{font-family:'Fraunces',serif; font-size:17px; margin-bottom:5px;}
+  .features li .fd{font-size:13.5px; color:var(--ink-soft);}
+
+  .shots-web img{width:100%; border:1px solid var(--line); display:block; margin-bottom:16px;}
+  .shots-mobile{display:flex; gap:16px; flex-wrap:wrap;}
+  .shots-mobile img{width:220px; max-width:44%; border:1px solid var(--line); border-radius:14px; display:block;}
+
+  .gallery img{width:100%; border:1px solid var(--line); display:block; margin-bottom:16px;}
+
+  footer{padding:40px 0; text-align:center;}
+  footer a{font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:.08em; text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:3px;}
+  .missing{padding:120px 28px; text-align:center; color:var(--ink-soft);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="name">Koh<span class="mono" style="color:var(--ink-soft); font-size:12px;">.ux</span></div>
+    <a class="back" href="index.html#work">← All projects</a>
+  </div>
+</nav>
+
+<div id="content"></div>
+
+<script>
+function param(name){ return new URLSearchParams(location.search).get(name); }
+
+async function load(){
+  const res = await fetch('content/portfolio.json?_=' + Date.now());
+  const d = await res.json();
+  const projects = d.caseStudies || [];
+  const idx = parseInt(param('p'), 10);
+  const c = projects[idx];
+  const root = document.getElementById('content');
+
+  if (!c){
+    root.innerHTML = '<div class="missing wrap"><h1>Project not found</h1><p style="margin-top:12px">This project may have been moved. <a href="index.html#work" style="border-bottom:1px solid var(--line)">Back to all projects</a></p></div>';
+    return;
+  }
+
+  document.title = (c.title || 'Project') + ' — Koh';
+
+  const meta = [];
+  if (c.role)     meta.push(`<div><span class="k">Role</span><span class="v">${c.role}</span></div>`);
+  if (c.timeline) meta.push(`<div><span class="k">Timeline</span><span class="v">${c.timeline}</span></div>`);
+  if (c.tools)    meta.push(`<div><span class="k">Tools</span><span class="v">${c.tools}</span></div>`);
+  if (c.platform) meta.push(`<div><span class="k">Platform</span><span class="v">${c.platform}</span></div>`);
+
+  let html = `
+    <section class="hero"><div class="wrap">
+      ${c.status ? `<span class="status">${c.status}</span>` : ''}
+      <h1>${c.title || ''}</h1>
+      ${c.tagline ? `<p class="tagline">${c.tagline}</p>` : (c.description ? `<p class="tagline">${c.description}</p>` : '')}
+      ${meta.length ? `<div class="meta">${meta.join('')}</div>` : ''}
+      ${c.link ? `<a class="live" href="${c.link}" target="_blank" rel="noopener">Open live prototype →</a>` : ''}
+    </div></section>`;
+
+  // Concept / idea
+  if (c.concept){
+    html += `<section class="blk"><div class="wrap">
+      <span class="eyebrow">The idea</span><h2>Concept</h2>
+      <div class="prose"><p>${c.concept}</p></div></div></section>`;
+  }
+  // Design approach
+  if (c.approach){
+    html += `<section class="blk"><div class="wrap">
+      <span class="eyebrow">How I got there</span><h2>Design approach</h2>
+      <div class="prose"><p>${c.approach}</p></div></div></section>`;
+  }
+  // Features
+  if (c.features && c.features.length){
+    html += `<section class="blk"><div class="wrap">
+      <span class="eyebrow">What it does</span><h2>Key features</h2>
+      <ul class="features">${c.features.map(f =>
+        `<li><div class="ft">${f.title||''}</div><div class="fd">${f.detail||''}</div></li>`).join('')}</ul>
+    </div></section>`;
+  }
+  // Website screenshots
+  if (c.webShots && c.webShots.length){
+    html += `<section class="blk"><div class="wrap">
+      <span class="eyebrow">Responsive website</span><h2>On the web</h2>
+      <div class="shots-web">${c.webShots.map(s => `<img src="${s.image}" alt="${s.caption||''}">`).join('')}</div>
+    </div></section>`;
+  }
+  // Mobile screenshots
+  if (c.mobileShots && c.mobileShots.length){
+    html += `<section class="blk"><div class="wrap">
+      <span class="eyebrow">Mobile app</span><h2>On the phone</h2>
+      <div class="shots-mobile">${c.mobileShots.map(s => `<img src="${s.image}" alt="${s.caption||''}">`).join('')}</div>
+    </div></section>`;
+  }
+
+  html += `<footer><div class="wrap">
+     ${c.link ? `<a href="${c.link}" target="_blank" rel="noopener" style="margin-right:24px">Open live prototype →</a>` : ''}
+     <a href="index.html#work">← Back to all projects</a>
+  </div></footer>`;
+
+  root.innerHTML = html;
+}
+load();
+</script>
+</body>
+</html>
