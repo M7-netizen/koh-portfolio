@@ -33,17 +33,17 @@ collections:
             fields:
               - { label: "From (old skill)", name: "from", widget: "string" }
               - { label: "To (design skill)", name: "to", widget: "string" }
-          - label: "Case Studies"
+          - label: "Projects"
             name: "caseStudies"
             widget: "list"
             fields:
-              - { label: "Status", name: "status", widget: "select", options: ["In progress", "Planned", "Complete"] }
+              - { label: "Status", name: "status", widget: "select", options: ["Live prototype", "In progress", "Planned", "Complete"] }
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Problem", name: "problem", widget: "string", required: false }
               - { label: "Process", name: "process", widget: "string", required: false }
               - { label: "Outcome", name: "outcome", widget: "string", required: false }
-              - { label: "Link to full case study (optional)", name: "link", widget: "string", required: false }
+              - { label: "Link to live prototype / project (optional)", name: "link", widget: "string", required: false }
           - label: "Skills grid"
             name: "skills"
             widget: "list"
