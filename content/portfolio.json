@@ -28,20 +28,20 @@
   ],
   "transferList": [
     {
-      "from": "From BIM coordination",
-      "to": "Reading complex systems → mapping user flows"
+      "from": "From architecture",
+      "to": "Designing experiences through space → designing experiences through interfaces"
     },
     {
-      "from": "From clash detection",
-      "to": "Spotting friction → usability problem-solving"
+      "from": "From system thinking",
+      "to": "Understanding relationships → mapping user journeys"
     },
     {
-      "from": "From Dynamo scripting",
-      "to": "Logic-building → prototyping interactions"
+      "from": "From coordination",
+      "to": "Identifying friction → improving usability"
     },
     {
-      "from": "From schedules & specs",
-      "to": "Rigor with detail → design documentation"
+      "from": "From detailing",
+      "to": "Precision and clarity → Building thoughtful design systems"
     }
   ],
   "heroHeadlineEmphasis": "move through.",
