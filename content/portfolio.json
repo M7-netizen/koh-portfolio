@@ -92,6 +92,18 @@
       "mobileShots": [
         {
           "image": "/uploads/截图5.png"
+        },
+        {
+          "image": "/uploads/截图8.png",
+          "caption": "Camera scan with real-time leaf analysis and condition scoring"
+        },
+        {
+          "image": "/uploads/截图9.png",
+          "caption": "Plant profile — habitat preferences and care conditions at a glance"
+        },
+        {
+          "image": "/uploads/截图10.png",
+          "caption": "Time-lapse slider: see how your plant fills out with good care"
         }
       ],
       "cover": "/uploads/截图.png",
