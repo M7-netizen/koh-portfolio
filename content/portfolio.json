@@ -61,11 +61,19 @@
   "caseStudies": [
     {
       "heroImage": "/uploads/截图2-2.png",
+      "webShots": [
+        {
+          "image": "/uploads/截图4.png"
+        }
+      ],
+      "concept": "Most plant care apps are reference tools — you search, you scroll, you guess. Flora starts from a different premise: what if your plant could just tell you what's wrong?\n\nThe idea was to design a conversational AI companion that greets you by name, asks to see your plant through the camera, and reads it the way a knowledgeable friend might — pointing out what looks good, flagging what doesn't, and explaining what to do about it in plain language. No menus to navigate, no Latin names to look up. Just a conversation.\n\nThe visual language draws from scientific field guides and botanical illustration — precise, considered, and calm — but the interaction itself is warm and alive, built around motion, typing animations, and a camera scan that feels like something is genuinely paying attention. The AR growth timeline at the end lets you fast-forward your plant months or years into the future, so care stops feeling abstract and starts feeling worth it.",
       "coverTone": "dark",
+      "reflection": "Note: This project is a high-fidelity interactive prototype demonstrating the app's design, user flow, and visual language. The camera scan, AI diagnosis, and AR growth preview are simulated interactions — the live plant analysis and augmented reality features are not yet technically implemented. The prototype is intended to communicate the intended experience, not to function as a finished product.",
       "heroTone": "dark",
       "process": "Conversational onboarding → camera scan → part-by-part analysis → care plan → growth preview.",
       "outcome": "A high-fidelity, clickable prototype spanning mobile app and responsive web.",
       "status": "Live prototype",
+      "platform": "Mobile App + Responsive Web",
       "mobileShots": [
         {
           "image": "/uploads/截图.png"
@@ -75,6 +83,36 @@
       "title": "Project 01 — Flora — a plant companion",
       "link": "https://m7-netizen.github.io/Flora/",
       "description": "A conversational app and responsive website that helps people diagnose issues with their houseplants. Scan a plant, get a living diagnosis with care advice, and fast-forward its growth in an AR-style timeline. Built as a fully interactive hi-fi prototype.",
+      "features": [
+        {
+          "title": "Conversational greeting",
+          "detail": "Flora opens with a typed greeting that adapts to the time of day — good morning, afternoon, or evening — addressing you as \"leaf whisperer.\" The interface feels like starting a conversation, not opening an app."
+        },
+        {
+          "title": "Camera scan with live analysis",
+          "detail": "Point your camera at any houseplant and Flora scans it in real time. Annotated bubbles appear directly on the plant — flagging leaf condition, stem health, and flower state — so you can see exactly what Flora is reading and why."
+        },
+        {
+          "title": "Species identification",
+          "detail": "Flora identifies your plant's species and growth stage from the scan, displaying a confidence match percentage. Works even if you're not sure what plant you have — just point and let it figure out."
+        },
+        {
+          "title": "Plain-language diagnosis",
+          "detail": "Based on what it sees, Flora delivers a verdict in plain language — not a list of symptoms but a clear explanation of what's wrong and why, written the way a knowledgeable friend would tell you."
+        },
+        {
+          "title": "Personalised care plan",
+          "detail": "Every diagnosis comes with a specific, actionable care plan — what to do, in what order, and how soon. No generic advice; the steps are tied directly to what Flora observed in your plant."
+        },
+        {
+          "title": "AR growth timeline",
+          "detail": "Scrub through a time slider to preview how your plant will grow — days, weeks, months, or years ahead — with the plant's shape and size changing in real time. A signature feature that makes long-term care feel tangible and worth committing to."
+        },
+        {
+          "title": "Save to my plants",
+          "detail": "After a diagnosis, save your plant to a personal collection. Flora tracks each plant's history and care schedule, and reminds you when it's time to check in again."
+        }
+      ],
       "problem": "Plant owners can tell something's wrong but rarely know what — or how to fix it before it's too late."
     },
     {
