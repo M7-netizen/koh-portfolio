@@ -1,23 +1,62 @@
 {
-  "heroKicker": "Portfolio — Rev. 01",
-  "heroHeadlinePlain": "Designing systems people can actually ",
-  "heroHeadlineEmphasis": "move through.",
-  "heroLede": "I'm Koh — a former BIM & architectural coordinator moving into UX/UI design. Six years of making complex systems legible for other people; now doing it on screens instead of buildings.",
-  "name": "Koh [Last Name]",
-  "discipline": "UI / UX Design",
-  "location": "Singapore / JB",
-  "status": "Open to work",
-  "aboutParagraphs": [
-    "I spent the last several years coordinating MEP and architectural systems on large-scale hospital projects — reading drawings the way a UX designer reads a user flow, and fixing clashes the way a designer resolves friction points.",
-    "I'm currently completing Google's UX Design Certificate and building out a design practice from the ground up: user research, wireframing, prototyping in Figma, and usability testing. This site will grow alongside that work — right now it's a foundation, not a finished portfolio.",
-    "What I bring that's harder to teach: precision under complexity. Years of reconciling hundreds of data points into something a contractor could act on without ambiguity. That instinct transfers directly into design systems, information architecture, and documentation."
+  "xiaohongshu": "",
+  "skills": [
+    {
+      "category": "Design",
+      "description": "Figma, wireframing, prototyping, design systems"
+    },
+    {
+      "category": "Research",
+      "description": "User interviews, personas, journey mapping"
+    },
+    {
+      "category": "Logic",
+      "description": "Dynamo / Python scripting, structured data, Excel"
+    },
+    {
+      "category": "Docs",
+      "description": "Technical drawings, specs, cross-team coordination"
+    },
+    {
+      "category": "Learning",
+      "description": "Google UX Design Certificate (in progress)"
+    },
+    {
+      "category": "Exploring",
+      "description": "Blender, Unreal Engine, AI-assisted design tools"
+    }
   ],
   "transferList": [
-    {"from": "From BIM coordination", "to": "Reading complex systems → mapping user flows"},
-    {"from": "From clash detection", "to": "Spotting friction → usability problem-solving"},
-    {"from": "From Dynamo scripting", "to": "Logic-building → prototyping interactions"},
-    {"from": "From schedules & specs", "to": "Rigor with detail → design documentation"}
+    {
+      "from": "From BIM coordination",
+      "to": "Reading complex systems → mapping user flows"
+    },
+    {
+      "from": "From clash detection",
+      "to": "Spotting friction → usability problem-solving"
+    },
+    {
+      "from": "From Dynamo scripting",
+      "to": "Logic-building → prototyping interactions"
+    },
+    {
+      "from": "From schedules & specs",
+      "to": "Rigor with detail → design documentation"
+    }
   ],
+  "heroHeadlineEmphasis": "move through.",
+  "name": "Koh Mei Qi",
+  "resume": "",
+  "heroKicker": "Portfolio — Rev. 01",
+  "discipline": "UI / UX Design",
+  "aboutParagraphs": [
+    "I believe every designed experience — whether a building, an interface, or an object — reflects a way of thinking about people.",
+    "My work and interests are shaped by curiosity: how people make decisions, how environments influence behavior, and how complexity can be transformed into something intuitive. I'm drawn to the tension between logic and emotion, structure and spontaneity, precision and ambiguity.\n",
+    "This space is less a portfolio and more an ongoing record of exploration — a collection of questions, experiments, and ideas that continue to shape how I think about design."
+  ],
+  "status": "Open to work",
+  "heroLede": "I'm Koh Mei Qi — a former architectural designer moving into UX/UI design. Years of designing spaces, systems, and experiences for people have shaped how I think about usability, clarity, and human-centered design. Today, I'm applying that same mindset to digital products — creating experiences that are intuitive, meaningful, and thoughtfully crafted.",
+  "location": "Singapore",
   "caseStudies": [
     {
       "status": "In progress",
@@ -38,16 +77,7 @@
       "link": ""
     }
   ],
-  "skills": [
-    {"category": "Design", "description": "Figma, wireframing, prototyping, design systems"},
-    {"category": "Research", "description": "User interviews, personas, journey mapping"},
-    {"category": "Logic", "description": "Dynamo / Python scripting, structured data, Excel"},
-    {"category": "Docs", "description": "Technical drawings, specs, cross-team coordination"},
-    {"category": "Learning", "description": "Google UX Design Certificate (in progress)"},
-    {"category": "Exploring", "description": "Blender, Unreal Engine, AI-assisted design tools"}
-  ],
+  "heroHeadlinePlain": "Designing systems people can actually ",
   "email": "your.email@example.com",
-  "linkedin": "",
-  "resume": "",
-  "xiaohongshu": ""
+  "linkedin": ""
 }
