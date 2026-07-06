@@ -67,6 +67,18 @@
       "webShots": [
         {
           "image": "/uploads/截图4.png"
+        },
+        {
+          "image": "/uploads/截图3.png",
+          "caption": "Camera scan with real-time leaf analysis and condition scoring"
+        },
+        {
+          "image": "/uploads/截图6.png",
+          "caption": "Plant profile — habitat preferences and care conditions at a glance"
+        },
+        {
+          "image": "/uploads/截图7.png",
+          "caption": "Time-lapse slider: see how your plant fills out with good care"
         }
       ],
       "concept": "Most plant care apps are reference tools — you search, you scroll, you guess. Flora starts from a different premise: what if your plant could just tell you what's wrong?\n\nThe idea was to design a conversational AI companion that greets you by name, asks to see your plant through the camera, and reads it the way a knowledgeable friend might — pointing out what looks good, flagging what doesn't, and explaining what to do about it in plain language. No menus to navigate, no Latin names to look up. Just a conversation.\n\nThe visual language draws from scientific field guides and botanical illustration — precise, considered, and calm — but the interaction itself is warm and alive, built around motion, typing animations, and a camera scan that feels like something is genuinely paying attention. The AR growth timeline at the end lets you fast-forward your plant months or years into the future, so care stops feeling abstract and starts feeling worth it.",
@@ -79,7 +91,7 @@
       "platform": "Mobile App + Responsive Web",
       "mobileShots": [
         {
-          "image": "/uploads/截图.png"
+          "image": "/uploads/截图5.png"
         }
       ],
       "cover": "/uploads/截图.png",
