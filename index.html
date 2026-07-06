@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Koh — UX Design Portfolio</title>
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDEAE3; --paper-2:#E2DDD0; --ink:#20241F; --ink-soft:#565A50;
+    --line:#B7AF9E; --moss:#4C6B52; --brick:#9C4A32; --card:#F4F2EB; --maxw:920px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper); color:var(--ink); font-family:'IBM Plex Sans', sans-serif;
+    font-weight:400; line-height:1.55; -webkit-font-smoothing:antialiased;
+    background-image:linear-gradient(var(--line) .5px, transparent .5px), linear-gradient(90deg, var(--line) .5px, transparent .5px);
+    background-size:38px 38px; background-attachment:fixed; position:relative;
+  }
+  body::before{content:""; position:fixed; inset:0; background:var(--paper); opacity:.86; z-index:-1;}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:.03em;}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft);}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; letter-spacing:-.01em; color:var(--ink);}
+  a{color:inherit;}
+  .reg{position:absolute; width:16px; height:16px; opacity:.55; pointer-events:none;}
+  .reg::before,.reg::after{content:""; position:absolute; background:var(--ink-soft);}
+  .reg::before{width:100%; height:1px; top:50%; left:0; transform:translateY(-50%);}
+  .reg::after{height:100%; width:1px; left:50%; top:0; transform:translateX(-50%);}
+  .reg-circle{position:absolute; width:6px; height:6px; border:1px solid var(--ink-soft); border-radius:50%; top:50%; left:50%; transform:translate(-50%,-50%); opacity:.55;}
+  .tl{top:14px; left:14px;} .tr{top:14px; right:14px;} .bl{bottom:14px; left:14px;} .br{bottom:14px; right:14px;}
+  section{position:relative; max-width:var(--maxw); margin:0 auto; padding:96px 28px; border-bottom:1px solid var(--line);}
+  section:last-of-type{border-bottom:none;}
+  nav{position:sticky; top:0; z-index:20; background:rgba(237,234,227,.88); backdrop-filter:blur(6px); border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex; justify-content:space-between; align-items:center; height:56px;}
+  nav .name{font-family:'Fraunces',serif; font-weight:500; font-size:16px;}
+  nav ul{list-style:none; display:flex; gap:26px;}
+  nav a{font-family:'IBM Plex Mono', monospace; font-size:11px; text-transform:uppercase; letter-spacing:.1em; text-decoration:none; color:var(--ink-soft); transition:color .2s;}
+  nav a:hover{color:var(--brick);}
+  .hero{padding-top:72px; padding-bottom:72px;}
+  .hero-kicker{display:flex; align-items:center; gap:10px; margin-bottom:28px;}
+  .hero-kicker span{font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--moss);}
+  .hero-kicker .rule{flex:1; height:1px; background:var(--line);}
+  .hero h1{font-size:clamp(38px, 6vw, 62px); line-height:1.05; max-width:14ch; margin-bottom:20px;}
+  .hero h1 em{font-style:italic; font-weight:400; color:var(--moss);}
+  .hero p.lede{max-width:52ch; font-size:17px; color:var(--ink-soft); margin-bottom:44px;}
+  .titleblock{border:1px solid var(--ink); display:grid; grid-template-columns:repeat(4, 1fr);}
+  .titleblock .field{padding:14px 16px; border-right:1px solid var(--ink); border-top:1px solid var(--ink);}
+  .titleblock .field:nth-child(4){border-right:none;}
+  .titleblock .field:nth-child(-n+4){border-top:none;}
+  .titleblock .field .k{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-soft); display:block; margin-bottom:6px;}
+  .titleblock .field .v{font-size:14px; font-weight:500;}
+  .sec-head{display:flex; align-items:baseline; gap:16px; margin-bottom:44px;}
+  .sec-head .idx{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--brick);}
+  .sec-head h2{font-size:28px;}
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:56px; align-items:start;}
+  .about-grid p{margin-bottom:16px; color:var(--ink-soft); font-size:15.5px;}
+  .transfer-list{list-style:none;}
+  .transfer-list li{padding:14px 0; border-top:1px solid var(--line); display:flex; flex-direction:column; gap:4px;}
+  .transfer-list li:last-child{border-bottom:1px solid var(--line);}
+  .transfer-list .from{font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.06em;}
+  .transfer-list .to{font-size:14.5px;}
+  .case-grid{display:flex; flex-direction:column; gap:22px;}
+  .case-card{position:relative; background:var(--card); border:1px solid var(--line); padding:32px; transition:border-color .25s, transform .25s;}
+  .case-card:hover{border-color:var(--ink); transform:translateY(-2px);}
+  .case-card .status{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--brick); border:1px solid var(--brick); display:inline-block; padding:3px 8px; margin-bottom:16px; border-radius:2px;}
+  .case-card h3{font-size:22px; margin-bottom:10px;}
+  .case-card .desc{color:var(--ink-soft); font-size:14.5px; max-width:60ch; margin-bottom:18px;}
+  .case-card .caselink{font-family:'IBM Plex Mono',monospace; font-size:12px; text-decoration:none; border-bottom:1px solid var(--line); display:inline-block; margin-bottom:18px;}
+  .case-steps{display:flex; gap:24px; flex-wrap:wrap;}
+  .case-steps div{font-size:12.5px; color:var(--ink-soft);}
+  .case-steps .k{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--moss); display:block; margin-bottom:3px;}
+  .skills-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .skill-cell{background:var(--paper); padding:22px 20px;}
+  .skill-cell .k{font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:.1em; color:var(--brick); display:block; margin-bottom:10px;}
+  .skill-cell p{font-size:13.5px; color:var(--ink-soft); line-height:1.5;}
+  .contact{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:32px;}
+  .contact h2{font-size:34px; max-width:14ch; margin-bottom:16px;}
+  .contact p{color:var(--ink-soft); max-width:40ch; margin-bottom:24px;}
+  .btn{display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:.08em; background:var(--ink); color:var(--paper); padding:14px 22px; text-decoration:none; border:1px solid var(--ink); transition:background .2s, color .2s;}
+  .btn:hover{background:transparent; color:var(--ink);}
+  .contact-links{display:flex; flex-direction:column; gap:10px; align-items:flex-end;}
+  .contact-links a{text-decoration:none; font-size:14px; border-bottom:1px solid var(--line);}
+  .contact-links a:hover{border-color:var(--ink);}
+  footer{max-width:var(--maxw); margin:0 auto; padding:28px; display:flex; justify-content:space-between; font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--ink-soft);}
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media(max-width:760px){
+    .about-grid{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr 1fr;}
+    .titleblock{grid-template-columns:1fr 1fr;}
+    .titleblock .field:nth-child(2n){border-right:none;}
+    .titleblock .field:nth-child(-n+2){border-top:none;}
+    .titleblock .field:nth-child(n+3){border-top:1px solid var(--ink);}
+    nav ul{gap:16px;}
+    .contact{align-items:flex-start;}
+    .contact-links{align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="name">Koh<span class="mono" style="color:var(--ink-soft); font-size:12px;">.ux</span></div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-kicker">
+    <span id="heroKicker">Portfolio — Rev. 01</span>
+    <div class="rule"></div>
+  </div>
+  <h1 id="heroHeadline"></h1>
+  <p class="lede" id="heroLede"></p>
+
+  <div class="titleblock">
+    <div class="field"><span class="k">Name</span><span class="v" id="tbName"></span></div>
+    <div class="field"><span class="k">Discipline</span><span class="v" id="tbDiscipline"></span></div>
+    <div class="field"><span class="k">Based in</span><span class="v" id="tbLocation"></span></div>
+    <div class="field"><span class="k">Status</span><span class="v" id="tbStatus"></span></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="reg tl"><span class="reg-circle"></span></div>
+  <div class="reg br"><span class="reg-circle"></span></div>
+  <div class="sec-head"><span class="idx">§01</span><h2>About</h2></div>
+  <div class="about-grid">
+    <div class="reveal" id="aboutParagraphs"></div>
+    <ul class="transfer-list" id="transferList"></ul>
+  </div>
+</section>
+
+<section id="work">
+  <div class="reg tl"><span class="reg-circle"></span></div>
+  <div class="reg br"><span class="reg-circle"></span></div>
+  <div class="sec-head"><span class="idx">§02</span><h2>Case studies</h2></div>
+  <div class="case-grid" id="caseGrid"></div>
+</section>
+
+<section id="skills">
+  <div class="reg tl"><span class="reg-circle"></span></div>
+  <div class="reg br"><span class="reg-circle"></span></div>
+  <div class="sec-head"><span class="idx">§03</span><h2>Tools &amp; methods</h2></div>
+  <div class="skills-grid" id="skillsGrid"></div>
+</section>
+
+<section id="contact">
+  <div class="reg tl"><span class="reg-circle"></span></div>
+  <div class="reg br"><span class="reg-circle"></span></div>
+  <div class="contact">
+    <div>
+      <h2>Let's talk.</h2>
+      <p>Open to junior UX/UI roles and opportunities to learn on the job. Resume available on request.</p>
+      <a class="btn" id="emailBtn" href="#">Email me →</a>
+    </div>
+    <div class="contact-links" id="contactLinks"></div>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 Koh</div>
+  <div class="mono">Built with care, not a template.</div>
+</footer>
+
+<script>
+async function loadContent(){
+  const res = await fetch('content/portfolio.json?_=' + Date.now());
+  const d = await res.json();
+
+  document.getElementById('heroKicker').textContent = d.heroKicker || '';
+  document.getElementById('heroHeadline').innerHTML =
+    (d.heroHeadlinePlain||'') + '<em>' + (d.heroHeadlineEmphasis||'') + '</em>';
+  document.getElementById('heroLede').textContent = d.heroLede || '';
+  document.getElementById('tbName').textContent = d.name || '';
+  document.getElementById('tbDiscipline').textContent = d.discipline || '';
+  document.getElementById('tbLocation').textContent = d.location || '';
+  document.getElementById('tbStatus').textContent = d.status || '';
+
+  document.getElementById('aboutParagraphs').innerHTML =
+    (d.aboutParagraphs||[]).map(p => `<p>${p}</p>`).join('');
+
+  document.getElementById('transferList').innerHTML =
+    (d.transferList||[]).map(t => `<li><span class="from">${t.from}</span><span class="to">${t.to}</span></li>`).join('');
+
+  document.getElementById('caseGrid').innerHTML =
+    (d.caseStudies||[]).map(c => `
+      <div class="case-card reveal">
+        <span class="status">${c.status||''}</span>
+        <h3>${c.title||''}</h3>
+        <p class="desc">${c.description||''}</p>
+        ${c.link ? `<a class="caselink" href="${c.link}" target="_blank">View case study →</a>` : ''}
+        <div class="case-steps">
+          <div><span class="k">Problem</span>${c.problem||'—'}</div>
+          <div><span class="k">Process</span>${c.process||'—'}</div>
+          <div><span class="k">Outcome</span>${c.outcome||'—'}</div>
+        </div>
+      </div>
+    `).join('');
+
+  document.getElementById('skillsGrid').innerHTML =
+    (d.skills||[]).map(s => `<div class="skill-cell"><span class="k">${s.category}</span><p>${s.description}</p></div>`).join('');
+
+  document.getElementById('emailBtn').href = 'mailto:' + (d.email || '');
+
+  let linksHtml = '';
+  if (d.linkedin) linksHtml += `<a href="${d.linkedin}" target="_blank">LinkedIn</a>`;
+  if (d.resume) linksHtml += `<a href="${d.resume}" target="_blank">Resume (PDF)</a>`;
+  if (d.xiaohongshu) linksHtml += `<a href="${d.xiaohongshu}" target="_blank">Xiaohongshu</a>`;
+  document.getElementById('contactLinks').innerHTML = linksHtml;
+
+  document.querySelectorAll('.reveal').forEach(el=>{
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold:.15});
+    io.observe(el);
+  });
+}
+loadContent();
+
+// Netlify Identity: catch invite / recovery tokens landing on the homepage
+// and route the user into the CMS admin to set their password.
+if (window.netlifyIdentity) {
+  window.netlifyIdentity.on('init', user => {
+    if (!user) {
+      window.netlifyIdentity.on('login', () => {
+        document.location.href = '/admin/';
+      });
+    }
+  });
+}
+</script>
+
+</body>
+</html>
