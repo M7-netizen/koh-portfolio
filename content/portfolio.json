@@ -118,6 +118,7 @@
     {
       "heroImage": "/uploads/截图4.jpg",
       "coverTone": "dark",
+      "heroTone": "dark",
       "process": "—",
       "outcome": "—",
       "status": "In progress",
