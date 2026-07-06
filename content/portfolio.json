@@ -91,7 +91,8 @@
       "platform": "Mobile App + Responsive Web",
       "mobileShots": [
         {
-          "image": "/uploads/截图14.jpg"
+          "image": "/uploads/截图14.jpg",
+          "caption": "Welcome screen — Flora greets you by time of day"
         },
         {
           "image": "/uploads/截图12.jpg",
