@@ -67,7 +67,7 @@
   .case-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
   @media(max-width:900px){.case-grid{grid-template-columns:repeat(2,1fr);}}
   @media(max-width:600px){.case-grid{grid-template-columns:1fr;}}
-  .case-card{position:relative; display:block; text-decoration:none; color:inherit; border:1px solid var(--line); background:var(--card); overflow:hidden; aspect-ratio:4/5; transition:transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s ease, border-color .25s; z-index:1;}
+  .case-card{position:relative; display:block; text-decoration:none; color:inherit; border:1px solid var(--line); border-radius:14px; background:var(--card); overflow:hidden; aspect-ratio:4/5; transition:transform .35s cubic-bezier(.2,.8,.3,1), box-shadow .35s ease, border-color .25s; z-index:1;}
   .case-card:hover{transform:translateY(-10px) scale(1.03); box-shadow:0 26px 46px -22px rgba(32,36,31,.6); border-color:var(--ink); z-index:2;}
   .case-card .cover{position:absolute; inset:0; background-size:cover; background-position:top center;}
   .case-card .cover.noimg{background:linear-gradient(140deg, var(--moss) 0%, #23331f 100%);}
