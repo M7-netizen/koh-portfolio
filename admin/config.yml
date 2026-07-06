@@ -39,6 +39,8 @@ collections:
             fields:
               - { label: "Status", name: "status", widget: "select", options: ["Live prototype", "In progress", "Planned", "Complete"] }
               - { label: "Title", name: "title", widget: "string" }
+              - { label: "Cover image", name: "cover", widget: "image", required: false, hint: "Screenshot of the project. Leave empty for a plain gradient cover." }
+              - { label: "Cover is dark or light?", name: "coverTone", widget: "select", options: ["dark", "light"], default: "dark", hint: "Dark cover → white text. Light cover → black text." }
               - { label: "Description", name: "description", widget: "text" }
               - { label: "Problem", name: "problem", widget: "string", required: false }
               - { label: "Process", name: "process", widget: "string", required: false }
