@@ -15,10 +15,13 @@ collections:
         name: "homepage"
         file: "content/portfolio.json"
         fields:
-          - { label: "Hero — small kicker text", name: "heroKicker", widget: "string" }
-          - { label: "Hero Headline (plain part)", name: "heroHeadlinePlain", widget: "string" }
-          - { label: "Hero Headline (emphasized/italic part)", name: "heroHeadlineEmphasis", widget: "string" }
-          - { label: "Hero paragraph", name: "heroLede", widget: "text" }
+          - { label: "Hero — small kicker text", name: "heroKicker", widget: "string", required: false }
+          - { label: "Hero Headline (plain part)", name: "heroHeadlinePlain", widget: "string", required: false }
+          - { label: "Hero Headline (emphasized/italic part)", name: "heroHeadlineEmphasis", widget: "string", required: false }
+          - { label: "Hero paragraph", name: "heroLede", widget: "text", required: false }
+          - { label: "Opening illustration — quote text", name: "illustrationQuote", widget: "text", required: false, hint: "The handwritten line on the landing illustration. Leave blank for the Saint-Exupéry default." }
+          - { label: "Opening illustration — attribution", name: "illustrationAttribution", widget: "string", required: false, hint: "e.g. Antoine de Saint-Exupéry" }
+          - { label: "Your photo (About section)", name: "profilePhoto", widget: "image", required: false, hint: "Portrait for the About section. Recommended: portrait / 4:5 ratio (e.g. 1000×1250px)." }
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Discipline", name: "discipline", widget: "string" }
           - { label: "Location", name: "location", widget: "string" }
@@ -30,6 +33,7 @@ collections:
             fields:
               - { label: "About heading", name: "about", widget: "string", required: false }
               - { label: "Projects heading", name: "projects", widget: "string", required: false }
+              - { label: "Others heading", name: "others", widget: "string", required: false }
               - { label: "Skills heading", name: "skills", widget: "string", required: false }
               - { label: "Contact heading", name: "contact", widget: "string", required: false }
           - label: "About — paragraphs"
@@ -87,6 +91,16 @@ collections:
                   - { label: "Image", name: "image", widget: "image", hint: "Shown uncropped at ~220px wide. Recommended: a real phone screenshot ratio, e.g. 375×812px or 390×844px (portrait)." }
                   - { label: "Caption", name: "caption", widget: "string", required: false }
               - { label: "Outcome & reflection (what you learned, what you'd do next)", name: "reflection", widget: "text", required: false }
+          - label: "Others (freelance: web / graphic / logo)"
+            name: "others"
+            widget: "list"
+            required: false
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false, hint: "Recommended: landscape 4:3 (e.g. 1200×900px)." }
+              - { label: "Link (optional)", name: "link", widget: "string", required: false }
           - label: "Skills grid"
             name: "skills"
             widget: "list"
