@@ -15,13 +15,10 @@ collections:
         name: "homepage"
         file: "content/portfolio.json"
         fields:
-          - { label: "Hero — small kicker text", name: "heroKicker", widget: "string", required: false }
-          - { label: "Hero Headline (plain part)", name: "heroHeadlinePlain", widget: "string", required: false }
-          - { label: "Hero Headline (emphasized/italic part)", name: "heroHeadlineEmphasis", widget: "string", required: false }
-          - { label: "Hero paragraph", name: "heroLede", widget: "text", required: false }
-          - { label: "Opening illustration — quote text", name: "illustrationQuote", widget: "text", required: false, hint: "The handwritten line on the landing illustration. Leave blank for the Saint-Exupéry default." }
-          - { label: "Opening illustration — attribution", name: "illustrationAttribution", widget: "string", required: false, hint: "e.g. Antoine de Saint-Exupéry" }
-          - { label: "Your photo (About section)", name: "profilePhoto", widget: "image", required: false, hint: "Portrait for the About section. Recommended: portrait / 4:5 ratio (e.g. 1000×1250px)." }
+          - { label: "Hero — small kicker text", name: "heroKicker", widget: "string" }
+          - { label: "Hero Headline (plain part)", name: "heroHeadlinePlain", widget: "string" }
+          - { label: "Hero Headline (emphasized/italic part)", name: "heroHeadlineEmphasis", widget: "string" }
+          - { label: "Hero paragraph", name: "heroLede", widget: "text" }
           - { label: "Name", name: "name", widget: "string" }
           - { label: "Discipline", name: "discipline", widget: "string" }
           - { label: "Location", name: "location", widget: "string" }
@@ -33,7 +30,6 @@ collections:
             fields:
               - { label: "About heading", name: "about", widget: "string", required: false }
               - { label: "Projects heading", name: "projects", widget: "string", required: false }
-              - { label: "Others heading", name: "others", widget: "string", required: false }
               - { label: "Skills heading", name: "skills", widget: "string", required: false }
               - { label: "Contact heading", name: "contact", widget: "string", required: false }
           - label: "About — paragraphs"
@@ -53,15 +49,15 @@ collections:
             fields:
               - { label: "Status", name: "status", widget: "select", options: ["Live prototype", "In progress", "Planned", "Complete"] }
               - { label: "Title", name: "title", widget: "string" }
-              - { label: "Cover image (card)", name: "cover", widget: "image", required: false, hint: "Screenshot for the homepage card. The card auto-crops to a tall 4:5 shape (e.g. 1200×1500px works well) — keep the main subject centered, not near the edges. Leave empty for a gradient cover." }
-              - { label: "Cover is dark or light?", name: "coverTone", widget: "select", options: ["dark", "light"], default: "dark", hint: "Dark cover shows white text, light cover shows black text." }
+              - { label: "Cover image (card)", name: "cover", widget: "image", required: false, hint: "Screenshot for the homepage card. The card auto-crops to a tall 4:5 shape (e.g. 1200×1500px) — keep the main subject centered. Leave empty for a gradient cover." }
+              - { label: "Cover is dark or light?", name: "coverTone", widget: "select", options: ["dark", "light"], default: "dark", hint: "Dark cover shows white text, light cover shows dark text." }
               - { label: "Short description (card + hero fallback)", name: "description", widget: "text" }
               - { label: "Problem (card hover)", name: "problem", widget: "string", required: false }
               - { label: "Process (card hover)", name: "process", widget: "string", required: false }
               - { label: "Outcome (card hover)", name: "outcome", widget: "string", required: false }
               - { label: "Link to live prototype / site", name: "link", widget: "string", required: false }
               - { label: "Tagline (big line on detail page)", name: "tagline", widget: "text", required: false }
-              - { label: "Detail page banner image", name: "heroImage", widget: "image", required: false, hint: "Wide background for the top banner of the project page. Recommended: 1920×800px or wider, landscape — the banner is short and wide, so avoid images with important detail near the top or bottom edges (they'll be covered by the gradient overlay)." }
+              - { label: "Detail page banner image", name: "heroImage", widget: "image", required: false, hint: "Wide background for the top banner of the project page. Recommended: 1920×800px or wider, landscape." }
               - { label: "Banner is dark or light?", name: "heroTone", widget: "select", options: ["dark", "light"], default: "dark", required: false, hint: "Dark banner shows white text, light banner shows dark text. Only applies when a banner image is set." }
               - { label: "Role", name: "role", widget: "string", required: false }
               - { label: "Timeline", name: "timeline", widget: "string", required: false }
@@ -81,26 +77,16 @@ collections:
                 widget: "list"
                 required: false
                 fields:
-                  - { label: "Image", name: "image", widget: "image", hint: "Shown at full width, uncropped. Recommended: 1600px wide or more, landscape (e.g. 1600×1000px)." }
+                  - { label: "Image", name: "image", widget: "image", hint: "Shown at full width, uncropped. Recommended: 1600px wide or more, landscape." }
                   - { label: "Caption", name: "caption", widget: "string", required: false }
               - label: "Mobile screenshots (tall)"
                 name: "mobileShots"
                 widget: "list"
                 required: false
                 fields:
-                  - { label: "Image", name: "image", widget: "image", hint: "Shown uncropped at ~220px wide. Recommended: a real phone screenshot ratio, e.g. 375×812px or 390×844px (portrait)." }
+                  - { label: "Image", name: "image", widget: "image", hint: "Shown uncropped. Recommended: a real phone screenshot ratio, e.g. 1290×2653px (portrait)." }
                   - { label: "Caption", name: "caption", widget: "string", required: false }
               - { label: "Outcome & reflection (what you learned, what you'd do next)", name: "reflection", widget: "text", required: false }
-          - label: "Others (freelance: web / graphic / logo)"
-            name: "others"
-            widget: "list"
-            required: false
-            summary: "{{fields.title}}"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Description", name: "description", widget: "string", required: false }
-              - { label: "Image", name: "image", widget: "image", required: false, hint: "Recommended: landscape 4:3 (e.g. 1200×900px)." }
-              - { label: "Link (optional)", name: "link", widget: "string", required: false }
           - label: "Skills grid"
             name: "skills"
             widget: "list"
